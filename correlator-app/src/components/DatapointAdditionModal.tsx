@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Modal, Text, TextInput, View, StyleSheet, Button } from "react-native";
 import { Picker } from "@react-native-picker/picker";
+import { Datapoint, DatapointHistory } from "../models/datapoint";
 
 const DatapointAdditionModal = ({ modalVisible, setModalVisible, onCreation }: {
     modalVisible: boolean;
     setModalVisible: (visible: boolean) => void;
-    onCreation?: (datapoint: Datapoint) => void;
+    onCreation?: (new_datapoint: Datapoint) => void;
 }) => {
     const [name, setName] = useState("");
     const [type, setType] = useState("");
@@ -19,12 +20,12 @@ const DatapointAdditionModal = ({ modalVisible, setModalVisible, onCreation }: {
             return;
         }
 
-        const newDatapoint: Datapoint = {
-            name,
-            type,
-            config: { },
-            history: []
-        };
+        const newDatapoint: Datapoint = new Datapoint({
+            name: name.trim(),
+            type: type,
+            color: "#b32727ff",
+            config: { }
+        });
 
         if (type === "rating") {
             if (!minRating || !maxRating) {
@@ -173,16 +174,5 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
     },
 });
-
-type Datapoint = {
-    name: string;
-    type: string;
-    config: Record<string, any>;
-    history: DatapointHistory;
-};
-type DatapointHistory = Array<{
-    timestamp: Date;
-    result: any;
-}>;
 
 export default DatapointAdditionModal;
