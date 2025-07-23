@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Modal, Text, TextInput, View, StyleSheet, Button } from "react-native";
 import { Picker } from "@react-native-picker/picker";
-import { Datapoint, DatapointHistory } from "../models/datapoint";
+import { Datapoint } from "../models/datapoint";
 
 const DatapointAdditionModal = ({ modalVisible, setModalVisible, onCreation }: {
     modalVisible: boolean;

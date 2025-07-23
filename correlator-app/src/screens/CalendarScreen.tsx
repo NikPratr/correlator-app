@@ -4,26 +4,6 @@ import { Calendar } from 'react-native-calendars';
 
 const CalendarScreen = () => {
     const [selectedDate, setSelectedDate] = useState('');
-    const styles = StyleSheet.create({
-        dayContainer: {
-            flex: 1,
-            aspectRatio: 1, // forces square
-            width: '100%',
-            justifyContent: 'center',
-            alignItems: 'center',
-            margin: 0,
-            padding: 0,
-            borderWidth: 1,
-            borderColor: '#ddd',
-        },
-        dayText: {
-            fontSize: 16,
-            color: '#000',
-        },
-        disabledText: {
-            color: '#ccc',
-        },
-    });
 
     return (
         <View style={{ flex: 1, padding: 50 }}>
