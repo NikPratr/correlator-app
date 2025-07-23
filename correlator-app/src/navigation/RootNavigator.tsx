@@ -8,13 +8,13 @@ import DatapointsScreen from '../screens/DatapointsScreen';
 const Tab = createBottomTabNavigator();
 
 export default function RootNavigator() {
-  return (
-    <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="Stats" component={StatsScreen} />
-        <Tab.Screen name="Calendar" component={CalendarScreen} />
-        <Tab.Screen name="Datapoints" component={DatapointsScreen} />
-      </Tab.Navigator>
-    </NavigationContainer>
-  );
+    return (
+        <NavigationContainer>
+            <Tab.Navigator>
+                <Tab.Screen name="Stats" component={StatsScreen} />
+                <Tab.Screen name="Calendar" component={CalendarScreen} />
+                <Tab.Screen name="Datapoints" component={DatapointsScreen} />
+            </Tab.Navigator>
+        </NavigationContainer>
+    );
 }
