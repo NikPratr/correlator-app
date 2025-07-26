@@ -55,12 +55,6 @@ const CalendarScreen = () => {
                     ...datapointsToMarkedDates(dummyDatapoints)
                 }}
             />
-
-            {selectedDate &&
-                <Text style={{ textAlign: 'center', marginTop: 20 }}>
-                    Selected Date: {selectedDate}
-                </Text>
-            }
         </View>
     );
 };
