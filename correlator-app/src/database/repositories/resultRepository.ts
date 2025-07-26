@@ -9,7 +9,10 @@ export type DatapointResultRow = DatapointResult & {
     datapoint_id: number;
     /** The ID of the result */
     id: number;
+    /** Store as ISO string for SQLite compatibility */
+    timestamp: string;
 };
+
 
 /**
  * Insert a new result for a specific datapoint

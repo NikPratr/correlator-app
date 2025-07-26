@@ -36,7 +36,7 @@ export class Datapoint {
         this.name = name;
         this.type = type;
         this.color = color;
-        this.config = config ?? {};
+        this.config = config ?? { };
         this.history = history ?? {
             results: [],
             trackingPeriods: [{ start: new Date() }]

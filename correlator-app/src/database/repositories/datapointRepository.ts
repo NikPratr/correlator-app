@@ -5,19 +5,18 @@ import { Datapoint } from '../../models/datapoint';
  * Represents a single datapoint as it is stored in the database; history is stored in separate tables
  * to allow for more efficient queries and updates.
  */
-export type DatapointRow = Omit<Datapoint, 'history'> & {
+export type DatapointRow = {
+	/** Autoincremeting ID */
 	id: number;
+	name: string;
+	type: string;
+	color: string;
 	/** Store config as JSON string */
 	config: string;
 }
 
-/**
- * Represents a single datapoint's modifiable fields as they are inputted by the user
- */
-export type DatapointInput = Omit<DatapointRow, 'id'>;
-
 /** Insert a single datapoint */
-export const insertDatapoint = async (datapoint: DatapointInput): Promise<number> => {
+export const insertDatapoint = async (datapoint: Datapoint): Promise<number> => {
 	const database = getDatabase();
 	const configStr = JSON.stringify(datapoint.config ?? {});
 
@@ -44,7 +43,7 @@ export const getDatapoint = async (id: number): Promise<DatapointRow | null> => 
 };
 
 /** Update a single datapoint based on its ID */
-export const updateDatapoint = async (id: number, updatedFields: Partial<DatapointInput>): Promise<void> => {
+export const updateDatapoint = async (id: number, updatedFields: Partial<Datapoint>): Promise<void> => {
 	const database = getDatabase();
 	const existing = await getDatapoint(id);
 	if (!existing) throw new Error(`Datapoint with id ${id} not found.`);
